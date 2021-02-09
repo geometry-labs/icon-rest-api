@@ -1,6 +1,6 @@
 from typing import Any
 
-import app.crud
+from app import crud
 from fastapi import APIRouter, HTTPException, WebSocket
 
 router = APIRouter()

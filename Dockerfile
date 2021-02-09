@@ -1,4 +1,4 @@
-FROM python:3.8-slim
+FROM python:3.8-slim as base
 
 WORKDIR /app/
 
@@ -13,4 +13,9 @@ RUN pip install -r /requirements.txt \
 
 COPY . /app/
 
+FROM base as prod
 CMD ["python3", "./main.py"]
+
+FROM base as test
+RUN pip install -r /requirements_dev.txt
+RUN python -m pytest

@@ -2,7 +2,10 @@ version: "3"
 
 services:
   rest-api:
-    build: .
+    build:
+      context: .
+      target: prod
+    
     ports:
       - "8000:8000"
     depends_on:
@@ -16,8 +19,10 @@ services:
       - "27017:27017"
     volumes:
       - ./mongodb/data/db:/data/db
-    environment:
-      MONGO_INITDB_DATABASE: "icon"
-      MONGO_INITDB_ROOT_USERNAME: "mongo"
-      MONGO_INITDB_ROOT_PASSWORD: "changethis"
+#    environment:
+#      MONGO_INITDB_DATABASE: "icon"
+#      MONGO_INITDB_ROOT_USERNAME: "mongo"
+#      MONGO_INITDB_ROOT_PASSWORD: "changethis"
+    env_file:
+      - .env
 

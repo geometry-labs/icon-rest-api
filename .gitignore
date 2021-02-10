@@ -1,6 +1,8 @@
+# dotenv
+#.env
 
 mongodb/
-
+.bak
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -45,8 +47,6 @@ coverage.xml
 *.cover
 .hypothesis/
 
-# dotenv
-.env
 
 # virtualenv
 .venv

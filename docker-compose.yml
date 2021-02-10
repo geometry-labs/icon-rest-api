@@ -1,28 +1,26 @@
-version: "3"
+version: "3.7"
+
+volumes:
+  mongodb:
 
 services:
-  rest-api:
+  rest:
     build:
       context: .
       target: prod
-    
+
     ports:
       - "8000:8000"
     depends_on:
       - mongodb
     env_file:
-      - .env
+      - tests/.env.test
 
   mongodb:
     image: mongo
     ports:
       - "27017:27017"
     volumes:
-      - ./mongodb/data/db:/data/db
-#    environment:
-#      MONGO_INITDB_DATABASE: "icon"
-#      MONGO_INITDB_ROOT_USERNAME: "mongo"
-#      MONGO_INITDB_ROOT_PASSWORD: "changethis"
+      - mongodb:/data/db
     env_file:
-      - .env
-
+      - tests/.env.test

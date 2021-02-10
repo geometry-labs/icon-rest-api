@@ -1,8 +1,7 @@
-version: "3"
+version: "3.7"
 
 services:
-  rest-api:
+  rest:
     build:
-      context: .
       target: test
-    
+  mongodb:

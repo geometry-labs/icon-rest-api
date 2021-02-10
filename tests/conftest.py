@@ -9,7 +9,7 @@ os.environ["ENV_FILE"] = os.path.join(
     ".env.test",
 )
 
-from app.main import app
+from main import app
 
 
 @pytest.fixture(scope="module")

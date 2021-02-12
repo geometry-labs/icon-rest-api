@@ -1,0 +1,62 @@
+[
+  {
+    "type": "log",
+    "log_index": 0,
+    "transaction_hash": "0xfd418771ac80e983c3c8edcde41c9fbfa40493b9c5c92dde7c155e5925418ce6",
+    "transaction_index": 0,
+    "address": "cx502c47463314f01e84b1b203c315180501eb2481",
+    "data": [
+      "0x"
+    ],
+    "indexed": [
+      "Transfer(Address,Address,int,bytes)",
+      "hx81542d3427e6502020df84ecdd7dd88f9fa5aa87",
+      "hx30755217891dbd21fe26a6e1c2c4376b2bab75d9",
+      "0x16345785d8a0000"
+    ],
+    "block_number": 10000000,
+    "block_timestamp": 1571606226552096,
+    "block_hash": "d3ca23378c6bdef5e17eb9dfb4fbcc7d17f5983570e8ddff6aff594d4dd44059",
+    "item_id": "log_0xfd418771ac80e983c3c8edcde41c9fbfa40493b9c5c92dde7c155e5925418ce6_0",
+    "item_timestamp": "2019-10-20T21:45:12Z"
+  },
+  {
+    "type": "log",
+    "log_index": 3,
+    "transaction_hash": "0xfa44050cbb7b6bf46963e50674f208b352f38d9d1d1a846f652fe707601e37eb",
+    "transaction_index": 0,
+    "address": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+    "data": [],
+    "indexed": [
+      "ICXTransfer(Address,Address,int)",
+      "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+      "hxfbf161da26bdda5609f8b15773eb1754389eb843",
+      "0x25c5754dae7e7ca1"
+    ],
+    "block_number": 10000000,
+    "block_timestamp": 1571606226552096,
+    "block_hash": "d3ca23378c6bdef5e17eb9dfb4fbcc7d17f5983570e8ddff6aff594d4dd44059",
+    "item_id": "log_0xfa44050cbb7b6bf46963e50674f208b352f38d9d1d1a846f652fe707601e37eb_3",
+    "item_timestamp": "2019-10-21T02:41:06Z"
+  },
+  {
+    "type": "log",
+    "log_index": 2,
+    "transaction_hash": "0xfa44050cbb7b6bf46963e50674f208b352f38d9d1d1a846f652fe707601e37eb",
+    "transaction_index": 0,
+    "address": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+    "data": [
+      "0x25c5754dae7e7ca1"
+    ],
+    "indexed": [
+      "BetResult(str,str,int)",
+      "0.41975",
+      "10"
+    ],
+    "block_number": 10000000,
+    "block_timestamp": 1571606226552096,
+    "block_hash": "d3ca23378c6bdef5e17eb9dfb4fbcc7d17f5983570e8ddff6aff594d4dd44059",
+    "item_id": "log_0xfa44050cbb7b6bf46963e50674f208b352f38d9d1d1a846f652fe707601e37eb_2",
+    "item_timestamp": "2019-10-21T02:41:06Z"
+  }
+]

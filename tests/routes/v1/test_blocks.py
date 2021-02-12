@@ -1,13 +1,14 @@
 import requests
+from fastapi.testclient import TestClient
 
 from app.core.config import settings
 
 
-def test_get_block_latest() -> None:
-    url = settings.SERVER_HOST + "blocks/"
-
-    response = requests.get(url)
-    assert response.status_code == 200
+def test_get_block_latest(client: TestClient) -> None:
+    r = client.get(f"{settings.API_V1_STR}/blocks/")
+    response = r.json()
+    assert r.status_code == 200
+    assert response
 
 
 def test_get_block_by_height() -> None:

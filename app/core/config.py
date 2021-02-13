@@ -5,8 +5,7 @@ from pydantic import AnyHttpUrl, BaseSettings
 
 class Settings(BaseSettings):
 
-    API_V1_STR: str = "/api/v1"
-    PROJECT_NAME: str
+    ICON_REST_API_ENDPOINT_PREFIX: str = "/api/v1"
 
     MONGO_URL: str
     MONGO_USER: str

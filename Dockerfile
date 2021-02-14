@@ -1,24 +1,13 @@
-FROM python:3.8-slim as base
-
-WORKDIR /src/
-
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7 as base
+WORKDIR /app/
 COPY ./requirements.txt /requirements.txt
-
-RUN apt-get update \
-    && apt-get install gcc -y \
-    && apt-get clean
-
 RUN pip install -r /requirements.txt \
-    && rm -rf /root/.cache/pip
-
-COPY . .
+	&& rm -rf /root/.cache/pip
+COPY ./app /app/app
 
 FROM base as prod
-CMD ["python3", "./main.py"]
 
 FROM base as test
 COPY ./requirements_dev.txt /requirements_dev.txt
+COPY ./tests ./tests
 RUN pip install -r /requirements_dev.txt
-
-# Run tests manually by execing into container in CI
-#RUN python -m pytest

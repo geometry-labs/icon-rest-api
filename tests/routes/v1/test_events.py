@@ -5,7 +5,7 @@ from app.core.config import settings
 
 def test_get_events_by_tx(prep_logs, client: TestClient):
     r = client.get(
-        f"{settings.ICON_REST_API_ENDPOINT_PREFIX}/events/tx/0xfd418771ac80e983c3c8edcde41c9fbfa40493b9c5c92dde7c155e5925418ce6"
+        f"{settings.API_ENDPOINT_PREFIX}/events/tx/0xfd418771ac80e983c3c8edcde41c9fbfa40493b9c5c92dde7c155e5925418ce6"
     )
     response = r.json()
     assert r.status_code == 200
@@ -23,7 +23,7 @@ def test_get_events_by_tx(prep_logs, client: TestClient):
 
 
 def test_get_events_latest_block(prep_logs, client: TestClient):
-    r = client.get(f"{settings.ICON_REST_API_ENDPOINT_PREFIX}/events/block")
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/events/block")
     response = r.json()
     assert r.status_code == 200
     assert response
@@ -37,7 +37,7 @@ def test_get_events_latest_block(prep_logs, client: TestClient):
 
 
 def test_get_events_by_height(prep_logs, client: TestClient):
-    r = client.get(f"{settings.ICON_REST_API_ENDPOINT_PREFIX}/tx/block/10000000")
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/tx/block/10000000")
     response = r.json()
     assert r.status_code == 200
     assert response

@@ -7,7 +7,7 @@ from app.core.config import settings
 def test_get_tx_by_hash(prep_transactions, client: TestClient):
     # TODO: Fix me -> from conftest OverflowError: MongoDB can only handle up to 8-byte ints
     r = client.get(
-        f"{settings.ICON_REST_API_ENDPOINT_PREFIX}/tx/hash/0xc065e6070af781b64bda7dac6d323779486a81e9409bc49514059125ea6e750c"
+        f"{settings.API_ENDPOINT_PREFIX}/tx/hash/0xc065e6070af781b64bda7dac6d323779486a81e9409bc49514059125ea6e750c"
     )
     response = r.json()
     assert r.status_code == 200
@@ -25,7 +25,7 @@ def test_get_tx_by_hash(prep_transactions, client: TestClient):
 
 
 def test_get_txs_latest_block(prep_transactions, client: TestClient):
-    r = client.get(f"{settings.ICON_REST_API_ENDPOINT_PREFIX}/tx/block")
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/tx/block")
     response = r.json()
     assert r.status_code == 200
     assert response
@@ -39,7 +39,7 @@ def test_get_txs_latest_block(prep_transactions, client: TestClient):
 
 
 def test_get_txs_by_height(prep_transactions, client: TestClient):
-    r = client.get(f"{settings.ICON_REST_API_ENDPOINT_PREFIX}/tx/block/10000000")
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/tx/block/10000000")
     response = r.json()
     assert r.status_code == 200
     assert response

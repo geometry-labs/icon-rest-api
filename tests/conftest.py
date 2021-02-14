@@ -13,7 +13,7 @@ if ENVIRONMENT == "local":
     )
 
 from app.db.session import MongoClient
-from main import app
+from app.main import app
 
 
 @pytest.fixture(scope="module")

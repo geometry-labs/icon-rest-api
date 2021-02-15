@@ -44,4 +44,6 @@ jobs:
           file: ./Dockerfile
           target: prod
           push: true
-          tags: geometrylabs/icon-rest-api:${{ steps.source.outputs.TAG }}
+          tags: |
+            geometrylabs/icon-rest-api:latest
+            geometrylabs/icon-rest-api:${{ steps.source.outputs.TAG }}

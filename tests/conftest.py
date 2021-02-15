@@ -22,40 +22,53 @@ def client() -> Generator:
         yield c
 
 
-def insert_fixture(fixture):
+def insert_fixture(fixture, collection_name=""):
+    if collection_name == "":
+        collection_name = fixture
+
     client = MongoClient
+
+    # Read fixture
     with open(
         os.path.join(
             os.path.abspath(os.path.dirname(__file__)), "fixtures", fixture + ".json"
         )
     ) as f:
         fixture_json = json.load(f)
+
+    # Populate collection
     db = client["icon"]
-    db.blocks.insert_many(fixture_json)
+    db[collection_name].insert_many(fixture_json)
 
 
 @pytest.fixture()
 def prep_blocks():
     insert_fixture("blocks")
     yield
+
+    # Clean up
     client = MongoClient
     db = client["icon"]
-    db.blocks.remove({})
+    db["blocks"].remove({})
 
 
 @pytest.fixture()
 def prep_transactions():
     insert_fixture("transactions")
     yield
+
+    # Clean up
     client = MongoClient
     db = client["icon"]
-    db.blocks.remove({})
+    db["transactions"].remove({})
 
 
 @pytest.fixture()
 def prep_logs():
-    insert_fixture("logs")
+    insert_fixture("logs", "events")
     yield
+
+    # Clean up
     client = MongoClient
     db = client["icon"]
-    db.blocks.remove({})
+    db["events"].remove({})

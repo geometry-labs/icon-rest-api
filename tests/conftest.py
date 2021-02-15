@@ -49,7 +49,7 @@ def prep_blocks():
     # Clean up
     client = MongoClient
     db = client["icon"]
-    db["blocks"].remove({})
+    db["blocks"].delete_many({})
 
 
 @pytest.fixture()
@@ -60,7 +60,7 @@ def prep_transactions():
     # Clean up
     client = MongoClient
     db = client["icon"]
-    db["transactions"].remove({})
+    db["transactions"].delete_many({})
 
 
 @pytest.fixture()
@@ -71,4 +71,4 @@ def prep_logs():
     # Clean up
     client = MongoClient
     db = client["icon"]
-    db["events"].remove({})
+    db["events"].delete_many({})

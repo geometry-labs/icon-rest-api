@@ -1,22 +1,23 @@
-from os import environ, getenv
+import os
 
 from pydantic import AnyHttpUrl, BaseSettings
 
 
 class Settings(BaseSettings):
 
-    ICON_REST_API_ENDPOINT_PREFIX: str = "/api/v1"
+    API_ENDPOINT_PREFIX: str = "/api/v1"
 
-    MONGO_URL: str
-    MONGO_USER: str
-    MONGO_PASS: str
+    MONGO_HOST: str
+    MONGO_USERNAME: str
+    MONGO_PASSWORD: str
+
+    # SERVER_HOST: str
 
     class Config:
-        case_sensitive = True
+        env_prefix = "icon_rest_"
 
 
-if getenv("ENV_FILE"):
-    settings = Settings(_env_file=environ["ENV_FILE"])
+if os.environ.get("ENV_FILE", False):
+    settings = Settings(_env_file=os.environ.get("ENV_FILE"))
 else:
     settings = Settings()
-    

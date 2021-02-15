@@ -1,16 +1,12 @@
 version: "3.7"
 
-volumes:
-  mongodb:
-
 services:
   rest:
     build:
       context: .
       target: prod
-
     ports:
-      - "8000:8000"
+      - "80:80"
     depends_on:
       - mongodb
     env_file:
@@ -20,7 +16,5 @@ services:
     image: mongo
     ports:
       - "27017:27017"
-    volumes:
-      - mongodb:/data/db
     env_file:
       - tests/.env.test

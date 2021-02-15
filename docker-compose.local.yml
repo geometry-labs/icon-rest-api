@@ -8,4 +8,4 @@ services:
     volumes:
       - ./mongodb/data/db:/data/db
     env_file:
-      - .env
+      - tests/.env.local

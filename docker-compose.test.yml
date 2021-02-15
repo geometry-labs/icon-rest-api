@@ -4,4 +4,3 @@ services:
   rest:
     build:
       target: test
-  mongodb:

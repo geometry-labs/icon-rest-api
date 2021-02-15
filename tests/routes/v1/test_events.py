@@ -37,7 +37,7 @@ def test_get_events_latest_block(prep_fixtures, client: TestClient):
 
 
 def test_get_events_by_height(prep_fixtures, client: TestClient):
-    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/tx/block/10000000")
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/events/block/10000000")
     response = r.json()
     assert r.status_code == 200
     assert response

@@ -45,7 +45,7 @@ def insert_fixture(fixture, collection_name=""):
 def prep_fixtures():
     insert_fixture("blocks")
     insert_fixture("transactions")
-    insert_fixture("events")
+    insert_fixture("logs")
     yield
 
     # Clean up
@@ -54,5 +54,5 @@ def prep_fixtures():
 
     db["blocks"].delete_many({})
     db["transactions"].delete_many({})
-    db["events"].delete_many({})
+    db["logs"].delete_many({})
 

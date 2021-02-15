@@ -42,33 +42,17 @@ def insert_fixture(fixture, collection_name=""):
 
 
 @pytest.fixture()
-def prep_blocks():
+def prep_fixtures():
     insert_fixture("blocks")
-    yield
-
-    # Clean up
-    client = MongoClient
-    db = client["icon"]
-    db["blocks"].delete_many({})
-
-
-@pytest.fixture()
-def prep_transactions():
     insert_fixture("transactions")
+    insert_fixture("events")
     yield
 
     # Clean up
     client = MongoClient
     db = client["icon"]
+
+    db["blocks"].delete_many({})
     db["transactions"].delete_many({})
-
-
-@pytest.fixture()
-def prep_logs():
-    insert_fixture("logs", "events")
-    yield
-
-    # Clean up
-    client = MongoClient
-    db = client["icon"]
     db["events"].delete_many({})
+

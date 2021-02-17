@@ -5,16 +5,14 @@ from pydantic import AnyHttpUrl, BaseSettings
 
 class Settings(BaseSettings):
 
-    API_ENDPOINT_PREFIX: str = "/api/v1"
-
-    MONGO_HOST: str
-    MONGO_USERNAME: str
-    MONGO_PASSWORD: str
-
-    # SERVER_HOST: str
+    ICON_REST_API_PORT: str = "8000"
+    ICON_REST_API_PREFIX: str = ""
+    ICON_REST_API_MONGO_HOST: str
+    ICON_REST_API_MONGO_USERNAME: str
+    ICON_REST_API_MONGO_PASSWORD: str
 
     class Config:
-        env_prefix = "icon_rest_"
+        case_sensitive = True
 
 
 if os.environ.get("ENV_FILE", False):

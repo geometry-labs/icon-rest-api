@@ -4,13 +4,13 @@ from app.core.config import settings
 
 
 def test_get_events_by_tx(prep_fixtures, client: TestClient):
-    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/events/block")
+    r = client.get(f"{settings.ICON_REST_API_PREFIX}/events/block")
     response = r.json()
     latest_hash = response[0]["transaction_hash"]
 
 
     r = client.get(
-        f"{settings.API_ENDPOINT_PREFIX}/events/tx/{latest_hash}"
+        f"{settings.ICON_REST_API_PREFIX}/events/tx/{latest_hash}"
     )
     response = r.json()
     assert r.status_code == 200
@@ -28,7 +28,7 @@ def test_get_events_by_tx(prep_fixtures, client: TestClient):
 
 
 def test_get_events_latest_block(prep_fixtures, client: TestClient):
-    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/events/block")
+    r = client.get(f"{settings.ICON_REST_API_PREFIX}/events/block")
     response = r.json()
     assert r.status_code == 200
     assert response
@@ -42,12 +42,12 @@ def test_get_events_latest_block(prep_fixtures, client: TestClient):
 
 
 def test_get_events_by_height(prep_fixtures, client: TestClient):
-    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/blocks/")
+    r = client.get(f"{settings.ICON_REST_API_PREFIX}/blocks/")
     response = r.json()
     latest_height = response[0]["number"]
     latest_hash = response[0]["hash"]
 
-    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/events/block/{latest_height}")
+    r = client.get(f"{settings.ICON_REST_API_PREFIX}/events/block/{latest_height}")
     response = r.json()
     assert r.status_code == 200
     assert response[0]["block_hash"] == latest_hash

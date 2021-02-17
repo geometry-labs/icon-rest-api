@@ -6,7 +6,7 @@ This service is used to retrieve historical data from the Icon blockchain
 Docker hub [image](https://hub.docker.com/r/geometrylabs/icon-rest-api)
 
 ## Endpoints
-## TODO
+TODO
 
 ## Docker build
 ```

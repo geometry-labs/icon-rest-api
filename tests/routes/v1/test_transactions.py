@@ -16,7 +16,7 @@ def test_get_tx_by_hash(prep_fixtures, client: TestClient):
     )
     response = r.json()
     assert r.status_code == 200
-    assert response[0]["block_number"] == latest_height
+    assert response["block_number"] == latest_height
 
 
 # def test_get_tx_by_hash() -> None:

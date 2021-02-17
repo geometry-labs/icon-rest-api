@@ -19,7 +19,7 @@ def test_get_block_by_height(prep_fixtures, client: TestClient) -> None:
     r = client.get(f"{settings.API_ENDPOINT_PREFIX}/blocks/height/{latest_height}")
     response = r.json()
     assert r.status_code == 200
-    assert response[0]["hash"] == latest_hash
+    assert response["hash"] == latest_hash
 
 
 def test_get_block_by_height_error(prep_fixtures, client: TestClient) -> None:
@@ -40,7 +40,7 @@ def test_get_block_by_hash(prep_fixtures, client: TestClient) -> None:
     )
     response = r.json()
     assert r.status_code == 200
-    assert response[0]["number"] == latest_height
+    assert response["number"] == latest_height
 
 
 def test_get_block_by_hash_error(prep_fixtures, client: TestClient) -> None:

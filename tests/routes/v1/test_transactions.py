@@ -5,13 +5,18 @@ from app.core.config import settings
 
 
 def test_get_tx_by_hash(prep_fixtures, client: TestClient):
-    # TODO: Fix me -> from conftest OverflowError: MongoDB can only handle up to 8-byte ints
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/tx/block")
+    response = r.json()
+
+    latest_hash = response[0]["hash"]
+    latest_height = response[0]["block_number"]
+
     r = client.get(
-        f"{settings.API_ENDPOINT_PREFIX}/tx/hash/0xc065e6070af781b64bda7dac6d323779486a81e9409bc49514059125ea6e750c"
+        f"{settings.API_ENDPOINT_PREFIX}/tx/hash/{latest_hash}"
     )
     response = r.json()
     assert r.status_code == 200
-    assert response
+    assert response["block_number"] == latest_height
 
 
 # def test_get_tx_by_hash() -> None:
@@ -39,10 +44,15 @@ def test_get_txs_latest_block(prep_fixtures, client: TestClient):
 
 
 def test_get_txs_by_height(prep_fixtures, client: TestClient):
-    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/tx/block/10000000")
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/blocks/")
+    response = r.json()
+    latest_height = response[0]["number"]
+    latest_hash = response[0]["hash"]
+
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/tx/block/{latest_height}")
     response = r.json()
     assert r.status_code == 200
-    assert response
+    assert response[0]["block_hash"] == latest_hash
 
 
 # def test_get_txs_by_height() -> None:

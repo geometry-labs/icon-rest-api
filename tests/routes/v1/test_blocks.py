@@ -11,13 +11,15 @@ def test_get_block_latest(prep_fixtures, client: TestClient) -> None:
 
 
 def test_get_block_by_height(prep_fixtures, client: TestClient) -> None:
-    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/blocks/height/10000000")
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/blocks/")
+    response = r.json()
+    latest_height = response[0]["number"]
+    latest_hash = response[0]["hash"]
+
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/blocks/height/{latest_height}")
     response = r.json()
     assert r.status_code == 200
-    assert (
-        response["hash"]
-        == "d3ca23378c6bdef5e17eb9dfb4fbcc7d17f5983570e8ddff6aff594d4dd44059"
-    )
+    assert response[0]["hash"] == latest_hash
 
 
 def test_get_block_by_height_error(prep_fixtures, client: TestClient) -> None:
@@ -28,12 +30,17 @@ def test_get_block_by_height_error(prep_fixtures, client: TestClient) -> None:
 
 
 def test_get_block_by_hash(prep_fixtures, client: TestClient) -> None:
+    r = client.get(f"{settings.API_ENDPOINT_PREFIX}/blocks/")
+    response = r.json()
+    latest_height = response[0]["number"]
+    latest_hash = response[0]["hash"]
+
     r = client.get(
-        f"{settings.API_ENDPOINT_PREFIX}/blocks/hash/d3ca23378c6bdef5e17eb9dfb4fbcc7d17f5983570e8ddff6aff594d4dd44059"
+        f"{settings.API_ENDPOINT_PREFIX}/blocks/hash/{latest_hash}"
     )
     response = r.json()
     assert r.status_code == 200
-    assert response["number"] == 10000000
+    assert response[0]["number"] == latest_height
 
 
 def test_get_block_by_hash_error(prep_fixtures, client: TestClient) -> None:

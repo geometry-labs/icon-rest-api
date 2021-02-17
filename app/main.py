@@ -25,13 +25,13 @@ app = FastAPI(
     description="Retrieve block, transaction, and event log data.",
     version="v0.1.0",
     openapi_tags=tags_metadata,
-    openapi_url=f"{settings.API_ENDPOINT_PREFIX}/openapi.json",
-    docs_url=f"{settings.API_ENDPOINT_PREFIX}/docs",
+    openapi_url=f"{settings.ICON_REST_API_PREFIX}/openapi.json",
+    docs_url=f"{settings.ICON_REST_API_PREFIX}/docs",
 )
 
-app.include_router(api_router, prefix=settings.API_ENDPOINT_PREFIX)
+app.include_router(api_router, prefix=settings.ICON_REST_API_PREFIX)
 
 if __name__ == "__main__":
     uvicorn.run(
-        "main:app", host="0.0.0.0", log_level="info", debug=True, workers=1
+        "main:app", host="0.0.0.0", port=settings.ICON_REST_API_PORT , log_level="info", debug=True, workers=1
     )  # TODO: 1 worker?

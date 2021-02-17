@@ -5,20 +5,12 @@ This service is used to retrieve historical data from the Icon blockchain
 
 Docker hub [image](https://hub.docker.com/r/geometrylabs/icon-rest-api)
 
-## Local build
-```
-go build -o main .
-```
-
 ## Docker build
 ```
-docker build . -t kafka-websocket-server:latest --target prod
+docker build . -t icon-rest-api:latest
 docker run \
-  -p "8080:8080" \
-  -e KAFKA_WEBSOCKET_SERVER_TOPICS="blocks,transactions,logs"
-  -e KAFKA_WEBSOCKET_SERVER_BROKER_URL="kafka:9092"
-  -e KAFKA_WEBSOCKET_SERVER_PORT="8080"
-  -e KAFKA_WEBSOCKET_SERVER_PREFIX="/ws"
+  -p "8000:8000" \
+  -e
   kafka-websocket-server:latest
 ```
 
@@ -26,7 +18,8 @@ docker run \
 
 | Name | Description | Default | Required |
 |------|-------------|---------|----------|
-| KAFKA_WEBSOCKET_SERVER_TOPICS | comma seperated list of topic names | NULL | True |
-| KAFKA_WEBSOCKET_SERVER_BROKER_URL | location of broker | NULL | True |
-| KAFKA_WEBSOCKET_SERVER_PORT | port to expose for websocket connections | "8080" | False |
-| KAFKA_WEBSOCKET_SERVER_PREFIX | prefix for websocket endpoints | "" | False |
+| ICON_REST_API_PORT | exposed port for rest api | "8000" | False |
+| ICON_REST_API_PREFIX | prefix used for every endpoint | "" | False |
+| ICON_REST_API_MONGO_HOST | host location of mongodb server | None | True |
+| ICON_REST_API_MONGO_USERNAME | username for mongodb | None | True |
+| ICON_REST_API_PORT | password for mongodb| None | True |

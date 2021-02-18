@@ -6,7 +6,21 @@ This service is used to retrieve historical data from the Icon blockchain
 Docker hub [image](https://hub.docker.com/r/geometrylabs/icon-rest-api)
 
 ## Endpoints
-TODO
+> All endpoints that return arrays have a `skip` and `limit` parameter
+
+| Path | Description | Response Type |
+|------|-------------|---------------|
+| /blocks | `GET` latest blocks | array |
+| /blocks/height/{height} | `GET` block by height | object |
+| /blocks/hash/{hash} | `GET` block by hash | object |
+| /tx/hash/{hash} | `GET` transaction by hash | object |
+| /tx/address/{address} | `GET` transaction by from address | array |
+| /tx/block | `GET` transactions in the latest blocks | array |
+| /tx/block/{height} | `GET` transactions by block height | array |
+| /events/tx/{hash} | `GET` event logs by from_address | array |
+| /events/block | `GET` event logs in the latest blocks | array |
+| /events/block/{height} | `GET` event logs by block height | array |
+
 
 ## Docker build
 ```

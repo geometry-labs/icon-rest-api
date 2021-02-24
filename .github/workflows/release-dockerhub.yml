@@ -1,4 +1,4 @@
-name: Release to CI
+name: Release to Dockerhub
 
 on:
   push:
